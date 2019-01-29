@@ -69,6 +69,8 @@ Authors: David Mutchler, Vibha Alangar, Matt Boutell, Dave Fisher, Mark Hays,
 #                  circle = rg.Circle(point, radius)
 #                  circle.attach_to(window)
 #                  x = x + diameter
+
+
 #
 #        If you want the row-of-circles that the above creates,
 #        one of the following two attempts is a CORRECT attempt
