@@ -68,7 +68,7 @@ def run_test_draw_parallel_lines():
     window2.close_on_mouse_click()
 
 
-def draw_parallel_lines(n, point, length, window):
+def draw_parallel_lines(n, x, y , l, window):
     """
     What comes in: The four arguments are:
       -- A positive integer n.
@@ -109,15 +109,14 @@ def draw_parallel_lines(n, point, length, window):
     #          ** FIRST DO A CONCRETE EXAMPLE BY HAND! **
     ###########################################################################
     # -------------------------------------------------------------------------
-    window = rg.RoseWindow(600, 350)
-    n:
-    point: rg.Point(50, 200)
-
-
+    window2 = rg.RoseWindow(600, 350)
+    total = 0
     for k in range(4):
-        lines = rg.Line(rg.Point(50, 200), rg.Point(50, 200))
-        lines.attach_to(window)
-    window.render()
+        total = 200 + 30*5
+        line = rg.Line(rg.Point(50, total))
+        l = line.length
+        line.attach_to(window2)
+    window2.render()
 
 
 
