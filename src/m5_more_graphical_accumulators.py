@@ -140,7 +140,7 @@ def run_test_draw_circles_from_rectangle():
     #   Follow the same form as the example in a previous problem.
     ###########################################################################
     # -------------------------------------------------------------------------
-    draw_circles_from_rectangle()
+    draw_circles_from_rectangle(4, 5, rg.Rectangle((400, 250), (440, 325)), rg.RoseWindow(720, 500))
 
 def draw_circles_from_rectangle(m, n, rectangle, window):
     """
@@ -197,10 +197,14 @@ def draw_circles_from_rectangle(m, n, rectangle, window):
     # -------------------------------------------------------------------------
     rectangle.attach_to(window)
     for k in range(m, n):
-        circle = rg.Circle((), .5*rectangle.get_height())
+        x = rectangle.get_center().x
+        y = rectangle.get_center().y
+        h = rectangle.get_height()
+        circle = rg.Circle((x - .5*h*m, y)), .5 * h)
         circle.move_by(k*circle.radius, k*circle.radius)
         circle.attach_to(window)
-        circle2 = rg.Circle((), .5*rectangle.get_width())
+        circle2 = rg.Circle((x, y - .5 * h * n), .5 * h)
+        circle2.attach_to(window)
     window.render()
 
 
