@@ -140,7 +140,20 @@ def run_test_draw_circles_from_rectangle():
     #   Follow the same form as the example in a previous problem.
     ###########################################################################
     # -------------------------------------------------------------------------
-    draw_circles_from_rectangle(4, 5, rg.Rectangle((400, 250), (440, 325)), rg.RoseWindow(720, 500))
+
+    window = rg.RoseWindow(720, 500)
+    rectangle = rg.Rectangle(rg.Point(400, 250),rg.Point(440, 325))
+    rectangle.fill_color = 'green'
+    rectangle.outline_color = 'black'
+    rectangle.outline_thickness = 5
+    draw_circles_from_rectangle(4, 5, rectangle, window)
+
+    rectangle2 = rg.Rectangle(rg.Point(500,450), rg.Point(600, 400))
+    rectangle2.fill_color = 'blue'
+    rectangle2.outline_thickness = 3
+    rectangle2.outline_color = 'red'
+    draw_circles_from_rectangle(8, 3, rectangle2, window)
+    window.close_on_mouse_click()
 
 def draw_circles_from_rectangle(m, n, rectangle, window):
     """
@@ -196,15 +209,26 @@ def draw_circles_from_rectangle(m, n, rectangle, window):
     ###########################################################################
     # -------------------------------------------------------------------------
     rectangle.attach_to(window)
-    for k in range(m, n):
-        x = rectangle.get_center().x
-        y = rectangle.get_center().y
+    for k in range(m):
+        center_x = (rectangle.get_center()).x
+        center_y = rectangle.get_center().y
+        w = rectangle.get_width()
         h = rectangle.get_height()
-        circle = rg.Circle((x - .5*h*m, y)), .5 * h)
-        circle.move_by(k*circle.radius, k*circle.radius)
+
+        circle = rg.Circle(rg.Point(center_x - .75*h, center_y), .5 * h)
+        circle.move_by(-(k)*h, 0)
         circle.attach_to(window)
-        circle2 = rg.Circle((x, y - .5 * h * n), .5 * h)
+        circle.fill_color = rectangle.fill_color
+
+    for k in range(n):
+        center_x = (rectangle.get_center()).x
+        center_y = (rectangle.get_center()).y
+        h = (rectangle.get_height())
+        circle2 = rg.Circle(rg.Point(center_x, center_y - .75*h), .5*w)
         circle2.attach_to(window)
+        circle2.outline_color = rectangle.outline_color
+        circle2.move_by(0, -k*w)
+
     window.render()
 
 
