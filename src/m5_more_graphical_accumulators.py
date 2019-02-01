@@ -324,7 +324,7 @@ def draw_lines_from_rectangles(rectangle1, rectangle2, n, window):
       :type window: rg.RoseWindow
       """
     # -------------------------------------------------------------------------
-    # TODO: 5. Implement and test this function.
+    # DONE: 5. Implement and test this function.
     #          Tests have been written for you (above).
     #
     # CONSIDER using the ACCUMULATOR IN GRAPHICS pattern,
@@ -337,6 +337,20 @@ def draw_lines_from_rectangles(rectangle1, rectangle2, n, window):
     #          ** FIRST DO A CONCRETE EXAMPLE BY HAND! **
     ###########################################################################
     # -------------------------------------------------------------------------
+    for k in range(n):
+        rectangle1.attach_to(window)
+        rectangle2.attach_to(window)
+        h = rectangle1.get_height()
+        w = rectangle1.get_width()
+        line = rg.Line(rectangle1.get_center(), rectangle2.get_center())
+        line.attach_to(window)
+        line.move_by(-k*.5*w, k*.5*h)
+        line.thickness = 5
+        if k % 2 ==0:
+            line.color = rectangle1.outline_color
+        else:
+            line.color = rectangle2.outline_color
+    window.render()
 
 
 # -----------------------------------------------------------------------------
